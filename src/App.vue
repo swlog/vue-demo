@@ -1,10 +1,10 @@
 <template>
-  <E03Binding/>
+  <E04Directives/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import E03Binding from "@/components/example1/E-03-binding.vue";
+import E04Directives from "@/components/example2/E-04-directives.vue";
 
 
 
@@ -12,7 +12,7 @@ import E03Binding from "@/components/example1/E-03-binding.vue";
 export default defineComponent({
   name: 'App',
   components: {
-    E03Binding
+    E04Directives
 
 
   }
