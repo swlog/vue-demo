@@ -1,7 +1,8 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+      'vue/setup-compiler-macros': true, // ✅ 이 줄 추가!
   },
   'extends': [
     'plugin:vue/vue3-essential',

@@ -1,10 +1,11 @@
 <template>
-  <E04Directives/>
+  <E05ParentComponent/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import E04Directives from "@/components/example2/E-04-directives.vue";
+import E05ParentComponent from "@/components/example3/ParentComponent.vue";
+
 
 
 
@@ -12,7 +13,7 @@ import E04Directives from "@/components/example2/E-04-directives.vue";
 export default defineComponent({
   name: 'App',
   components: {
-    E04Directives
+    E05ParentComponent
 
 
   }
