@@ -45,10 +45,6 @@
 import { ref, defineOptions } from 'vue'
 import ChildComponent from './ChildComponent.vue'
 
-// 컴포넌트 이름 명시
-defineOptions({
-  name: 'E05ParentComponent'
-})
 
 // 반응형 변수
 const parentMessage = ref('Hello from parent')
