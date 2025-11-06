@@ -5,7 +5,7 @@ export default {
 </script>
 
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, watch, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted, defineProps } from 'vue';
 
 // props 정의

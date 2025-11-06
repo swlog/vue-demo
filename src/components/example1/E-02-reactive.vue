@@ -27,7 +27,7 @@
   <div>{{ fullName }}</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 
 // 반응형 변수 정의 (기존 data() 대체)
