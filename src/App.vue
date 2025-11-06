@@ -1,15 +1,16 @@
 <template>
-  <E06ParentComponent/>
+  <E04Directives/>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import E06ParentComponent from "@/components/example4/ParentComponent.vue";
+import E04Directives from "@/components/example2/E-04-directives.vue";
+
 
 
 export default defineComponent({
   name: 'App',
   components: {
-    E06ParentComponent
+    E04Directives
 
 
   }
