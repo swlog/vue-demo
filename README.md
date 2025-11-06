@@ -44,6 +44,6 @@
 ### 💡 실행 결과
 
 <p align="center">
-  <img src="./screenshots/E02.png" alt="Before change" width="45%" style="border-radius: 8px; margin-right: 10px;"/>
+  <img src="./screenshots/E02-1.png" alt="Before change" width="45%" style="border-radius: 8px; margin-right: 10px;"/>
   <img src="./screenshots/E02-2.png" alt="After change" width="45%" style="border-radius: 8px;"/>
 </p>
