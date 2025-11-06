@@ -104,6 +104,38 @@
   <img src="./screenshots/E04-2.png" alt="After change" width="45%" style="border-radius: 8px;"/>
 </p>
 
+## example3
+이 예제는 **부모 컴포넌트(ParentComponent.vue)**와  
+**자식 컴포넌트(ChildComponent.vue)** 간의 **Props 전달과 Emit 이벤트 통신**을  
+Vue 2 → Vue 3로 변환한 사례입니다.
+
+### ✅ 변경 요약
+
+- **data() → ref():**  
+  부모 컴포넌트에서 `parentMessage`를 `ref()`로 선언해 반응형 상태로 관리.  
+
+- **props 정의 방식 변경:**  
+  자식 컴포넌트의 `props: ['message', 'id', 'password']`를  
+  `defineProps()` 함수로 변경하여 타입 명시(`String`, `Number`)와 함께 선언.  
+
+- **이벤트 전송(`emit`) 변경:**  
+  Vue 2의 `$emit('custom-event', payload)` 구문을  
+  `defineEmits(['custom-event'])`로 선언 후 `emit('custom-event', payload)`로 변경.  
+
+- **`export default` 제거:**  
+  두 컴포넌트 모두 `<script setup>` 문법을 사용하여  
+  불필요한 보일러플레이트 코드 제거 및 가독성 향상.
+
+- **컴포넌트 등록 방식 단순화:**  
+  `<script setup>`에서는 `import ChildComponent from './ChildComponent.vue'`만으로  
+  자동으로 템플릿 내에서 사용 가능.`components` 옵션 제거.
+
+
+---
+
+### 💡 실행 결과
+
+![E05ParentComponent](./screenshots/E05.png)
 
 
 
