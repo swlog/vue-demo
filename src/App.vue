@@ -1,26 +1,20 @@
 <template>
-  <E07OptionsApi/>
+  <E05ParentComponent/>
 </template>
-
 <script lang="ts">
-import { defineComponent } from 'vue';
-import E07OptionsApi from "@/components/example5/E-07-Options-API.vue";
-
-
-
-
-
+import { defineComponent } from 'vue'
+import E05ParentComponent from "@/components/example3/ParentComponent.vue";
 
 
 export default defineComponent({
   name: 'App',
   components: {
-    E07OptionsApi
-
+    E05ParentComponent
 
   }
-});
+})
 </script>
 
 <style>
+
 </style>

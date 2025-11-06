@@ -31,26 +31,29 @@
 <!--};-->
 <!--</script>-->
 
-<!-- ParentComponent.vue -->
+<!-- E05ParentComponent.vue -->
 <template>
   <div>
     <ChildComponent
         :message="parentMessage"
-        :id="1"
-        :password="1234"
         @custom-event="handleEvent"
     />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineOptions } from 'vue'
 import ChildComponent from './ChildComponent.vue'
 
-// 반응형 변수 (기존 data 대체)
+// 컴포넌트 이름 명시
+defineOptions({
+  name: 'E05ParentComponent'
+})
+
+// 반응형 변수
 const parentMessage = ref('Hello from parent')
 
-// 이벤트 핸들러 (기존 methods 대체)
+// 메서드
 const handleEvent = (payload) => {
   console.log(payload)
 }

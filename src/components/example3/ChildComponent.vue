@@ -14,7 +14,7 @@
 <!--};-->
 <!--</script>-->
 
-<!-- ChildComponent.vue -->
+ ChildComponent.vue
 <template>
   <div>
     <p>{{ message }}</p>
