@@ -76,5 +76,34 @@
 
 ![E-03-binding](./screenshots/E03.png)
 
+## E-04-Directives
+
+### ✅ 변경 요약
+
+- **data() → ref():**    
+  Vue 2의 `data()`에서 관리하던 `isVisible`, `count`, `items`를 Vue 3의 `ref()`로 선언하여 반응형 상태로 관리.  
+
+- **이벤트 핸들러 분리:**    
+  Vue 2 템플릿 내부의 인라인 로직(`@click="isVisible = !isVisible"`, `@click="count++"`)을  
+  `toggleVisibility()`, `incrementCount()` 함수로 분리하여 `<script setup>` 내부에서 정의.  
+
+- **`.value` 접근 방식 적용:**  
+  `ref`로 선언된 변수 접근 시 `.value` 사용 (`isVisible.value`, `count.value++`).  
+  → Vue 3의 Proxy 기반 반응형 시스템에 맞게 수정.
+
+- **구조 간소화:**  
+  `export default` 구문 제거 후 `<script setup>`으로 전환하여  
+  불필요한 보일러플레이트 코드 제거 및 가독성 향상.
+
+---
+
+### 💡 실행 결과
+
+<p align="center">
+  <img src="./screenshots/E04-1.png" alt="Before change" width="45%" style="border-radius: 8px; margin-right: 10px;"/>
+  <img src="./screenshots/E04-2.png" alt="After change" width="45%" style="border-radius: 8px;"/>
+</p>
+
+
 
 
