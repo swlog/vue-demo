@@ -52,10 +52,10 @@
 
 ### ✅ 변경 요약
 
-- - **Composition API 전환:**  
-    Vue 2의 Options API(`data`, `methods`)를 Vue 3의 Composition API(`<script setup>`)로 전환.      
-    →`import { ref } from 'vue'`를 통해 반응형 상태(`message`, `id`, `password`)를 명시적으로 선언.    
-    → 불필요한 `export default` 및 `this` 참조 제거로 코드 구조 단순화.  
+- **Composition API 전환:**  
+  Vue 2의 Options API(`data`, `methods`)를 Vue 3의 Composition API(`<script setup>`)로 전환.      
+  →`import { ref } from 'vue'`를 통해 반응형 상태(`message`, `id`, `password`)를 명시적으로 선언.    
+  → 불필요한 `export default` 및 `this` 참조 제거로 코드 구조 단순화.  
 
 - **data() → ref():**    
   Vue 2의 `data()` 옵션을 Composition API의 `ref()`로 변환, `message`, `id`, `password`를 모두 `ref()`로 선언하여 반응형 상태로 관리.
@@ -63,7 +63,7 @@
 - **메서드 정의 방식 변경:**  
   Vue 2의 `methods` 옵션 대신 Composition API 문법으로 함수 정의.  
   → `const updateMessage = () => { ... }` 형태로 선언.  
-  → 버튼 클릭 시 `message.value = \\${id.value} \${password.value}\` 로 갱신.
+  → 버튼 클릭 시 `message.value = ${id.value} ${password.value}` 로 갱신.
 
 - **이벤트 핸들러 변경:**  
   템플릿의 인라인 화살표 함수 `@click="() => { ... }"`를 제거하여 <script setup> 내부에 별도의 `updateMessage 함수`를 정의하여 참조하도록 변경.    
