@@ -1,26 +1,32 @@
-<script>
-export default {
-  name: 'E09CompositionApi'
-}
-</script>
-
+<template>
+  <div>
+    <h2>{{ title }}</h2>
+    <p>Full Name: {{ fullName }}</p>
+    <input v-model="firstName" placeholder="First Name" />
+    <input v-model="lastName" placeholder="Last Name" />
+    <button @click="greet">Greet</button>
+    <p>Greeting Count: {{ greetCount }}</p>
+    <p>{{ message }}</p>
+  </div>
+</template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted, defineProps } from 'vue';
+import { ref, computed, watch, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
 
 // props 정의
-const props = defineProps({
-  title: {
-    type: String,
-    default: 'User Information'
-  }
+interface Props {
+  title?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  title: 'User Information'
 });
 
 // 반응형 상태 정의
-const firstName = ref('John');
-const lastName = ref('Doe');
-const greetCount = ref(0);
-const message = ref('');
+const firstName = ref<string>('John');
+const lastName = ref<string>('Doe');
+const greetCount = ref<number>(0);
+const message = ref<string>('');
 
 // 계산된 속성
 const fullName = computed(() => `${firstName.value} ${lastName.value}`);
@@ -44,22 +50,10 @@ watch(greetCount, (newValue, oldValue) => {
 });
 
 // 라이프사이클 훅 정의
-onBeforeMount(() => console.log('beforeMount hook'));
-onMounted(() => console.log('mounted hook'));
-onBeforeUpdate(() => console.log('beforeUpdate hook'));
-onUpdated(() => console.log('updated hook'));
-onBeforeUnmount(() => console.log('beforeUnmount hook'));
-onUnmounted(() => console.log('unmounted hook'));
+onBeforeMount(() => console.log('onBeforeMount hook'));
+onMounted(() => console.log('onMounted hook'));
+onBeforeUpdate(() => console.log('onBeforeUpdate hook'));
+onUpdated(() => console.log('onUpdated hook'));
+onBeforeUnmount(() => console.log('onBeforeUnmount hook'));
+onUnmounted(() => console.log('onUnmounted hook'));
 </script>
-
-<template>
-  <div>
-    <h2>{{ title }}</h2>
-    <p>Full Name: {{ fullName }}</p>
-    <input v-model="firstName" placeholder="First Name" />
-    <input v-model="lastName" placeholder="Last Name" />
-    <button @click="greet">Greet</button>
-    <p>Greeting Count: {{ greetCount }}</p>
-    <p>{{ message }}</p>
-  </div>
-</template>

@@ -243,3 +243,26 @@ Composition API (setup() 함수) → <script setup> 변환
 ---
 ![E08composition-api](./screenshots/E08.png)
 
+## example7
+Composition API (이중 블록) → <script setup>
+
+### ✅ 변경 요약
+
+- **이중 `<script>` 블록 → 단일 `<script setup>` 블록:**  
+  `<script>` (name 정의용)와 `<script setup>` (로직용) 이중 구조를  
+  단일 `<script setup lang="ts">` 블록으로 통합.  
+  `name` 옵션은 파일명으로 자동 추론되므로 제거.
+
+- **`defineProps()` 타입 정의 방식 변경:**  
+  `defineProps({ title: { type: String, default: '...' } })` 구문을  
+  TypeScript interface + `withDefaults(defineProps<Props>(), { ... })`로 변경.
+
+- **불필요한 import 제거:**  
+  `defineProps`는 `<script setup>`에서 자동으로 사용 가능하므로  
+  명시적 import 불필요.
+
+- **TypeScript 타입 추가:**  
+  모든 `ref()` 선언에 제네릭 타입 명시.
+
+---
+![E09composition-API2](./screenshots/E09.png)
