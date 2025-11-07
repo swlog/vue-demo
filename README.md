@@ -697,35 +697,6 @@ watch(greetCount, (newValue, oldValue) => {
 | beforeUnmount | onBeforeUnmount() |
 | unmounted | onUnmounted() |
 
-**Vue 3 예시:**
-```typescript
-console.log('setup - replaces beforeCreate and created');
-
-onBeforeMount(() => {
-  console.log('onBeforeMount hook');
-});
-
-onMounted(() => {
-  console.log('onMounted hook');
-});
-
-onBeforeUpdate(() => {
-  console.log('onBeforeUpdate hook');
-});
-
-onUpdated(() => {
-  console.log('onUpdated hook');
-});
-
-onBeforeUnmount(() => {
-  console.log('onBeforeUnmount hook');
-});
-
-onUnmounted(() => {
-  console.log('onUnmounted hook');
-});
-```
-
 ### 실행 결과
 
 ![E07-Options-API](./screenshots/E07.png)
