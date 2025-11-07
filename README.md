@@ -3,6 +3,20 @@
 본 프로젝트는 Vue 2 기반 예제를 Vue 3 스타일로 리팩터링한 자료입니다.  
 기능 추가 없이, 기존 동작과 화면을 그대로 유지하면서 코드 구조를 Vue 3 문법으로 전환했습니다.
 
+## 🔄 공통 변경사항 (전체 컴포넌트 적용)
+
+- **`<script>` → `<script setup lang="ts">`:**  
+  모든 컴포넌트에서 Vue 3의 Composition API를 사용하며,  
+  TypeScript를 적용하여 타입 안정성 확보.
+
+- **`export default` 제거:**  
+  `<script setup>` 문법 사용으로 불필요한 보일러플레이트 코드 제거.
+
+- **컴포넌트 자동 등록:**  
+  `components` 옵션 없이 `import`만으로 자동 등록.
+
+---
+
 ## E-01-Instance 
 
 ### ✅ 변경 요약 (E01Instance.vue)
@@ -111,25 +125,22 @@ Vue 2 → Vue 3로 변환한 사례입니다.
 
 ### ✅ 변경 요약
 
-- **data() → ref():**  
-  부모 컴포넌트에서 `parentMessage`를 `ref()`로 선언해 반응형 상태로 관리.  
+- **`data()` → `ref<T>()`:**  
+  부모 컴포넌트에서 `parentMessage`를 `ref<string>()`로 선언해 반응형 상태로 관리.  
+  TypeScript 제네릭으로 타입 명시.
+
+- **`methods` → 일반 함수 선언:**  
+  `methods: { handleEvent(payload) { } }` 구문을  
+  `const handleEvent = (payload: string) => console.log(payload)`로 변경.  
+  함수 파라미터에 TypeScript 타입 추가.
 
 - **props 정의 방식 변경:**  
   자식 컴포넌트의 `props: ['message', 'id', 'password']`를  
-  `defineProps()` 함수로 변경하여 타입 명시(`String`, `Number`)와 함께 선언.  
+  TypeScript `interface`로 타입 정의 후 `defineProps<Props>()`로 선언.
 
 - **이벤트 전송(`emit`) 변경:**  
-  Vue 2의 `$emit('custom-event', payload)` 구문을  
-  `defineEmits(['custom-event'])`로 선언 후 `emit('custom-event', payload)`로 변경.  
-
-- **`export default` 제거:**  
-  두 컴포넌트 모두 `<script setup>` 문법을 사용하여  
-  불필요한 보일러플레이트 코드 제거 및 가독성 향상.
-
-- **컴포넌트 등록 방식 단순화:**  
-  `<script setup>`에서는 `import ChildComponent from './ChildComponent.vue'`만으로  
-  자동으로 템플릿 내에서 사용 가능.`components` 옵션 제거.
-
+  Vue 2의 템플릿 내 `$emit('custom-event', payload)` 구문을  
+  `defineEmits<{ 'custom-event': [payload: string] }>()`로 타입과 함께 선언.
 
 ---
 
