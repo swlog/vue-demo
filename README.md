@@ -308,3 +308,27 @@ Composition API (setup() 함수) → <script setup> 변환
 
 ---
 ![E11Reactive](./screenshots/E11.png)
+
+## E-12-Ref-Component
+Composition API (setup() 함수) → <script setup> 변환
+
+### ✅ 변경 요약
+
+- **`setup()` 함수 → `<script setup>` 직접 선언:**  
+  `setup() { ... return { ... } }` 함수 전체를 제거하고  
+  변수와 함수를 최상위에 직접 선언. 자동으로 템플릿에 노출됨.
+
+- **`return` 문 제거:**  
+  `setup()` 함수에서 사용하던 `inputField`, `focusInput`을 명시적으로 `return`할 필요 없이  
+  선언만으로 템플릿에서 바로 사용 가능.
+
+- **TypeScript 타입 추가:**  
+  DOM 요소 ref에 `Ref<HTMLInputElement | null>` 타입 명시.  
+  `ref<HTMLInputElement | null>(null)`로 선언하여 타입 안정성 확보.
+
+- **Template Ref 사용:**  
+  `ref(null)`로 선언한 변수명과 템플릿의 `ref="inputField"` 속성을 매칭하여  
+  DOM 요소에 직접 접근 가능.
+
+---
+![E12Ref-Component](./screenshots/E12.png)
