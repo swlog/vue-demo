@@ -243,7 +243,7 @@ Composition API (setup() 함수) → <script setup> 변환
 ---
 ![E08composition-api](./screenshots/E08.png)
 
-## example7
+## E-09-composition-API2
 Composition API (이중 블록) → <script setup>
 
 ### ✅ 변경 요약
