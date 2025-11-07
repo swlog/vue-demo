@@ -148,38 +148,28 @@ Vue 2 → Vue 3로 변환한 사례입니다.
 
 ![E05ParentComponent](./screenshots/E05.png)
 
-## example 4
-
-### 🧩 구성 개요
-이 예제는 **부모 컴포넌트(ParentComponent.vue)**가    
-**자식 컴포넌트 2개(ChildComponent1.vue, ChildComponent2.vue)**로 데이터를 전달하는  
-**Provide / Inject** 패턴을  
-Vue 2 → Vue 3 구조로 변환한 사례입니다.
-
----
+## example4
+이 예제는 부모 컴포넌트(ParentComponent.vue)에서  
+자식 컴포넌트 2개(ChildComponent1, ChildComponent2)로  
+**Provide/Inject 패턴**을 통해 데이터를 전달하는  
+Vue 2 → Vue 3 Composition API 변환 사례입니다.
 
 ### ✅ 변경 요약
 
-- **provide() 옵션 → provide() 함수 (함수형 호출):**    
-  Vue 2의 `provide()` 옵션에서 객체를 `return`하던 구조를,  
-  Vue 3 Composition API의 `provide('key', value)` **함수형 호출 구조**로 전환.  
-  `<script setup>` 내부에서 Key-Value 형태로 직접 데이터를 주입.
+- **`provide()` → `provide()` 함수:**  
+  부모 컴포넌트에서 `provide() { return { sharedMessage: '...' } }` 구문을  
+  `provide('sharedMessage', 'Hello from provide')`로 변경.  
+  `vue`에서 `provide` 함수를 import하여 사용.
 
-- **컴포넌트 등록 간소화:**    
-  기존 Vue 2의 `components` 옵션 등록 방식이 사라지고,  
-  `<script setup>` 내부에서 `import`만으로 `ChildComponent1`과 `ChildComponent2`가  
-  자동 인식되어 템플릿에서 바로 사용 가능.
+- **`inject` → `inject<T>()` 함수:**  
+  자식 컴포넌트에서 `inject: ['sharedMessage']` 배열 선언을  
+  `const sharedMessage = inject<string>('sharedMessage')`로 변경.  
+  TypeScript 제네릭으로 주입되는 값의 타입 명시.
 
+- **깊은 계층 구조에서의 데이터 전달:**  
+  ChildComponent1 → ChildComponent2로 이어지는 깊은 계층에서도  
+  props drilling 없이 `inject`로 직접 부모의 데이터 접근 가능.
 
-- **inject 옵션 → inject() 함수:**    
-  Vue 2의 `inject: ['sharedMessage']`를
-  Vue 3의 `const sharedMessage = inject('sharedMessage')`로 변경하여
-  반응형 데이터로 수신.
-
-- **반응형 흐름 단순화:**   
-  부모에서 한 번 provide하면,
-  자식1–자식2로 이어지는 모든 하위 컴포넌트에서 동일한 데이터 접근 가능.
-  데이터 전달 경로를 단축하고 코드량을 최소화.
-
+---
 ![E06ParentComponent](./screenshots/E06.png)
 
