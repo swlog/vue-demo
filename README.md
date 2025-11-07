@@ -183,7 +183,8 @@ computed 속성과 라이프사이클 훅의 변환 방법을 학습합니다.
 
 **Vue 2:**
 ```javascript
-data() {
+data()
+{
   return {
     firstName: "Kyungsu",
     lastName: "Lee"
@@ -224,7 +225,8 @@ const fullName = computed(() => `${firstName.value} ${lastName.value}`)
 
 **Vue 2:**
 ```js
-mounted(){
+mounted()
+{
   setTimeout(() => {
     this.firstName = "KSL";
   }, 2000);
@@ -266,7 +268,8 @@ v-model 양방향 바인딩과 이벤트 핸들러 처리 방법을 익힙니다
 
 **Vue 2:**
 ```javascript
-data() {
+data() 
+{
   return {
     message: "Hello Vue",
     id: '',
@@ -335,7 +338,8 @@ v-if, v-for, v-show 등 디렉티브 사용 시 Composition API 적용법을 학
 
 **Vue 2:**
 ```javascript
-data() {
+data() 
+{
   return {
     isVisible: true,
     items: [
@@ -427,7 +431,8 @@ const incrementCount = () => {
 
 **Vue 2:**
 ```javascript
-data() {
+data() 
+{
   return {
     parentMessage: 'Hello from Parent'
   }
@@ -444,9 +449,10 @@ const parentMessage = ref<string>('Hello from Parent')
 **Vue 2:**
 ```javascript
 methods: {
-  handleEvent(payload) {
+  handleEvent(payload) 
+    {
     console.log('Received:', payload)
-  }
+    }
 }
 ```
 
@@ -492,32 +498,6 @@ const emit = defineEmits<{
 emit('custom-event', 'Hello from child')
 ```
 
-### 전체 코드 예시 (자식 컴포넌트)
-
-```vue
-<template>
-  <div>
-    <p>{{ message }}</p>
-    <p>{{ id }}</p>
-    <p>{{ password }}</p>
-    <button @click="emit('custom-event', 'Hello from child')">Send Event</button>
-  </div>
-</template>
-
-<script setup lang="ts">
-interface Props {
-  message: string;
-  id: number;
-  password: number;
-}
-
-defineProps<Props>();
-const emit = defineEmits<{
-  'custom-event': [payload: string]
-}>();
-</script>
-```
-
 ### 실행 결과
 
 ![E05-Props-Emit](./screenshots/E05.png)
@@ -541,7 +521,8 @@ Props drilling 없이 깊은 계층의 컴포넌트에 데이터를 전달하는
 
 **Vue 2:**
 ```javascript
-provide() {
+provide() 
+{
   return {
     sharedMessage: 'Hello from provide'
   }
@@ -568,46 +549,6 @@ inject: ['sharedMessage']
 import { inject } from 'vue';
 
 const sharedMessage = inject<string>('sharedMessage');
-```
-
-### 전체 코드 예시
-
-**부모 컴포넌트:**
-```vue
-<template>
-  <div>
-    <ChildComponent1 />
-  </div>
-</template>
-
-<script setup lang="ts">
-import { provide } from 'vue'
-import ChildComponent1 from "@/components/example4/ChildComponent1.vue"
-
-provide('sharedMessage', 'Hello from provide')
-</script>
-```
-
-**자식 컴포넌트 (ChildComponent1):**
-```vue
-<template>
-  <h3>Child 1</h3>
-  <div>
-    <p>{{ sharedMessage }}</p>
-  </div>
-
-  <h3>Child 2</h3>
-  <div>
-    <ChildComponent2 />
-  </div>
-</template>
-
-<script setup lang="ts">
-import { inject } from 'vue';
-import ChildComponent2 from "@/components/example4/ChildComponent2.vue";
-
-const sharedMessage = inject<string>('sharedMessage');
-</script>
 ```
 
 ### 핵심 개념
@@ -659,7 +600,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 **Vue 2:**
 ```javascript
-data() {
+data() 
+{
   return {
     firstName: 'John',
     lastName: 'Doe',
@@ -682,7 +624,8 @@ const message = ref<string>('');
 **Vue 2:**
 ```javascript
 computed: {
-  fullName() {
+  fullName() 
+    {
     return `${this.firstName} ${this.lastName}`;
   }
 }
@@ -698,7 +641,8 @@ const fullName = computed(() => `${firstName.value} ${lastName.value}`);
 **Vue 2:**
 ```javascript
 methods: {
-  greet() {
+  greet() 
+    {
     this.greetCount++;
     this.message = `Hello, ${this.fullName}!`;
   }
@@ -718,7 +662,8 @@ const greet = () => {
 **Vue 2:**
 ```javascript
 watch: {
-  greetCount(newValue, oldValue) {
+  greetCount(newValue, oldValue) 
+    {
     console.log(`Greet count changed from ${oldValue} to ${newValue}`);
     if (newValue >= 3) {
       this.message = "That's enough greetings for now!";
@@ -801,7 +746,8 @@ onUnmounted(() => {
 
 **Vue 2 Composition API:**
 ```javascript
-setup(props) {
+setup(props) 
+{
   const firstName = ref('John')
   const greet = () => {
     alert(`Hello, ${firstName.value}!`)
@@ -832,7 +778,8 @@ const greet = () => {
 
 **setup() 방식:**
 ```typescript
-setup(props) {
+setup(props) 
+{
   console.log(props.title)
 }
 ```
@@ -925,7 +872,8 @@ withDefaults(defineProps<Props>(), {
 
 **setup() 방식:**
 ```javascript
-setup() {
+setup() 
+{
   const count = ref(0)
   const increment = () => {
     count.value++
@@ -954,27 +902,6 @@ const count = ref<number>(0)
 
 - `ref()`는 원시 타입 데이터를 반응형으로 만듦
 - `.value`를 통해 값에 접근/변경
-
-### 전체 코드
-
-```vue
-<template>
-  <div>
-    <p>Count: {{ count }}</p>
-    <button @click="increment">Increment</button>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const count = ref<number>(0);
-
-const increment = () => {
-  count.value++;
-};
-</script>
-```
 
 ### 실행 결과
 
@@ -1024,36 +951,6 @@ const incrementAge = () => {
 | 타입 안정성 | `ref<T>()` | `reactive<T>()` |
 | 재할당 | 가능 (`count.value = 10`) | 불가능 (속성만 변경) |
 
-### 전체 코드
-
-```vue
-<template>
-  <div>
-    <p>Name: {{ person.name }}</p>
-    <p>Age: {{ person.age }}</p>
-    <button @click="incrementAge">Increment Age</button>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { reactive } from 'vue';
-
-interface Person {
-  name: string;
-  age: number;
-}
-
-const person = reactive<Person>({
-  name: 'John Doe',
-  age: 30
-});
-
-const incrementAge = () => {
-  person.age++;
-};
-</script>
-```
-
 ### 실행 결과
 
 ![E11-Reactive](./screenshots/E11.png)
@@ -1074,7 +971,8 @@ Template Ref를 사용해 DOM 요소에 직접 접근하는 방법을 학습합�
 
 **setup() 방식:**
 ```javascript
-setup() {
+setup()
+{
   const inputField = ref(null)
   return { inputField }
 }
