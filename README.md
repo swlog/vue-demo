@@ -246,8 +246,8 @@ onMounted(() => {
 ### 실행 결과
 
 <p align="center">
-  <img src="./screenshots/E02-1.png" alt="변경 전" width="45%"/>
-  <img src="./screenshots/E02-2.png" alt="변경 후" width="45%"/>
+  <img src="./screenshots/E02-1.png" width="45%"/>
+  <img src="./screenshots/E02-2.png" width="45%"/>
 </p>
 
 ---
@@ -954,7 +954,6 @@ const count = ref<number>(0)
 
 - `ref()`는 원시 타입 데이터를 반응형으로 만듦
 - `.value`를 통해 값에 접근/변경
-- 템플릿에서는 `.value` 생략 가능
 
 ### 전체 코드
 
@@ -1112,13 +1111,6 @@ onMounted(() => {
 });
 </script>
 ```
-
-### 사용 시나리오
-
-- ✅ 입력 필드에 포커스 주기
-- ✅ 특정 엘리먼트로 스크롤
-- ✅ 외부 라이브러리와 DOM 통합
-- ✅ 애니메이션 제어
 
 ### 실행 결과
 
