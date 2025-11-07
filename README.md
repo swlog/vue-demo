@@ -1045,7 +1045,7 @@ onMounted(() => {
 
 ### 4. TypeScript 통합
 
-- 모든`ref()`, `reactive()`에 제네릭 타입 지정
+- `ref()`, `reactive()`에 제네릭 타입 지정
 - Props, Emit에 인터페이스 정의
 - 타입 안정성으로 런타임 에러 사전 방지
 
