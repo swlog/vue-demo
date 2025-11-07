@@ -174,6 +174,7 @@ Vue 2 → Vue 3 Composition API 변환 사례입니다.
 ![E06ParentComponent](./screenshots/E06.png)
 
 ## E-07-Options-API
+Options API → Composition API 변환 
 
 ### ✅ 변경 요약
 
@@ -217,3 +218,28 @@ Vue 2 → Vue 3 Composition API 변환 사례입니다.
 
 ---
 ![E07Options-API](./screenshots/E07.png)
+
+## E-08-composition-api
+Composition API (setup() 함수) → <script setup> 변환
+
+### ✅ 변경 요약
+
+- **`setup(props)` 함수 → `<script setup>` 직접 선언:**  
+  `setup(props) { ... return { ... } }` 함수 전체를 제거하고  
+  변수와 함수를 최상위에 직접 선언. 자동으로 템플릿에 노출됨.
+
+- **`return` 문 제거:**  
+  `setup()` 함수에서 사용하던 변수들을 명시적으로 `return`할 필요 없이  
+  선언만으로 템플릿에서 바로 사용 가능.
+
+- **`props` 매개변수 → `defineProps<T>()`:**  
+  `setup(props)` 매개변수로 받던 props를  
+  `defineProps<Props>()`와 `withDefaults()`로 선언.
+
+- **TypeScript 타입 추가:**  
+  모든 `ref()` 선언에 제네릭 타입 명시  
+  (`ref<string>()`, `ref<number>()` 등).
+
+---
+![E08composition-api](./screenshots/E08.png)
+

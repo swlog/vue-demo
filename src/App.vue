@@ -1,16 +1,15 @@
 <template>
-  <E07OptionsAPI/>
+  <E08CompositionApi/>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import E07OptionsAPI from "@/components/example5/E-07-Options-API.vue";
-
+import E08CompositionApi from "@/components/example5/E-08-composition-api.vue";
 
 
 export default defineComponent({
   name: 'App',
   components: {
-    E07OptionsAPI
+    E08CompositionApi
 
 
   }
