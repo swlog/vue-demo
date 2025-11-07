@@ -1,15 +1,16 @@
 <template>
-  <E05ParentComponent/>
+  <E07OptionsAPI/>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import E05ParentComponent from "@/components/example3/ParentComponent.vue";
+import E07OptionsAPI from "@/components/example5/E-07-Options-API.vue";
+
 
 
 export default defineComponent({
   name: 'App',
   components: {
-    E05ParentComponent
+    E07OptionsAPI
 
 
   }

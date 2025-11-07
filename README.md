@@ -173,3 +173,47 @@ Vue 2 → Vue 3 Composition API 변환 사례입니다.
 ---
 ![E06ParentComponent](./screenshots/E06.png)
 
+## E-07-Options-API
+
+### ✅ 변경 요약
+
+- **`props` → `defineProps<T>()` + `withDefaults()`:**  
+  `props: { title: { type: String, default: '...' } }` 구문을  
+  `withDefaults(defineProps<Props>(), { title: 'User Information' })`로 변경.  
+  TypeScript interface로 타입 정의 후 기본값 설정.
+
+- **`data()` → `ref<T>()`:**  
+  `data() { return { firstName: 'John', ... } }` 구문을  
+  각각 `const firstName = ref<string>('John')` 형태로 변경.  
+  모든 반응형 데이터를 개별 `ref()`로 선언.
+
+- **`computed` → `computed()`:**  
+  `computed: { fullName() { return ... } }` 구문을  
+  `const fullName = computed(() => ...)`로 변경.  
+  `vue`에서 `computed` 함수를 import하여 사용.
+
+- **`methods` → 일반 함수:**  
+  `methods: { greet() { ... } }` 구문을  
+  `const greet = () => { ... }`로 변경.  
+  화살표 함수 또는 일반 함수로 선언.
+
+- **`watch` → `watch()`:**  
+  `watch: { greetCount(newValue, oldValue) { ... } }` 구문을  
+  `watch(greetCount, (newValue, oldValue) => { ... })`로 변경.  
+  감시할 대상을 첫 번째 인자로 명시.
+
+- **Lifecycle Hooks 변경:**
+    - `beforeCreate`, `created` → `setup` 함수 본문 (자동 실행)
+    - `beforeMount` → `onBeforeMount()`
+    - `mounted` → `onMounted()`
+    - `beforeUpdate` → `onBeforeUpdate()`
+    - `updated` → `onUpdated()`
+    - `beforeUnmount` → `onBeforeUnmount()`
+    - `unmounted` → `onUnmounted()`
+
+- **`this` 키워드 제거:**  
+  Options API의 `this.firstName`, `this.greet()` 등이  
+  Composition API에서는 직접 변수명으로 접근 (`firstName.value`, `greet()`).
+
+---
+![E07Options-API](./screenshots/E07.png)
