@@ -266,3 +266,23 @@ Composition API (이중 블록) → <script setup>
 
 ---
 ![E09composition-API2](./screenshots/E09.png)
+
+## E-10-Ref
+Composition API (setup() 함수) → <script setup> 변환
+
+### ✅ 변경 요약
+
+- **`setup()` 함수 → `<script setup>` 직접 선언:**  
+  `setup() { ... return { ... } }` 함수 전체를 제거하고  
+  변수와 함수를 최상위에 직접 선언. 자동으로 템플릿에 노출됨.
+
+- **`return` 문 제거:**  
+  `setup()` 함수에서 사용하던 `count`, `increment`를 명시적으로 `return`할 필요 없이  
+  선언만으로 템플릿에서 바로 사용 가능.
+
+- **TypeScript 타입 추가:**  
+  `ref()` 선언에 제네릭 타입 명시 (`ref<number>(0)`).
+
+---
+![E10Ref](./screenshots/E10.png)
+
